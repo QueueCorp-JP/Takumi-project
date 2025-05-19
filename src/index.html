@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TAKUMI Project WebAR 体験</title>
+  <!-- Google Model Viewer with AR support -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600&display=swap">
+  <style>
+    .language-selector {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
+    }
+    
+    .lang-btn {
+      background-color: #1a0a0a;
+      color: var(--color-text);
+      border: 1px solid var(--color-accent);
+      border-radius: 4px;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .lang-btn:hover, .lang-btn.active {
+      background-color: var(--color-accent);
+      color: #000;
+      box-shadow: 0 0 10px rgba(193, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="pattern-overlay"></div>
+  
+  <div class="language-selector">
+    <button class="lang-btn active" data-lang="ja">日本語</button>
+    <button class="lang-btn" data-lang="en">English</button>
+    <button class="lang-btn" data-lang="ar">العربية</button>
+  </div>
+  
+  <header>
+    <div class="container">
+      <div class="ornate-border">
+        <h1 data-ja="TAKUMI <span class='accent'>Project</span>" data-en="TAKUMI <span class='accent'>Project</span>" data-ar="مشروع <span class='accent'>تاكومي</span>">TAKUMI <span class="accent">Project</span></h1>
+        <p class="subtitle" data-ja="伝統工芸の「職人技」を世界の芸術へ" data-en="Transforming traditional craftsmanship into global art" data-ar="تحويل الحرف التقليدية إلى فن عالمي">伝統工芸の「職人技」を世界の芸術へ</p>
+        <div class="decorative-divider"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- キングのセクション -->
+    <section class="hero">
+      <div class="geometric-pattern left"></div>
+      <div class="container">
+        <div class="model-container">
+          <!-- model-viewer の実装 -->
+          <model-viewer
+            src="models/KING.gltf"
+            alt="キングの3Dモデル"
+            auto-rotate
+            camera-controls
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            shadow-intensity="1"
+            camera-orbit="0deg 75deg 2m"
+            id="chess-model-king"
+          >
+            <button slot="ar-button" class="ar-button">
+              <span data-ja="Web AR で見る" data-en="View in Web AR" data-ar="عرض بتقنية الواقع المعزز">Web AR で見る</span>
+            </button>
+          </model-viewer>
+          
+          <!-- カメラ視点切り替えボタン -->
+          <div class="camera-controls">
+            <button class="camera-btn" data-target="chess-model-king" data-orbit="0deg 75deg 2m" data-ja="上から" data-en="Top View" data-ar="من الأعلى">上から</button>
+            <button class="camera-btn" data-target="chess-model-king" data-orbit="90deg 45deg 2m" data-ja="横から" data-en="Side View" data-ar="من الجانب">横から</button>
+            <button class="camera-btn" data-target="chess-model-king" data-orbit="180deg 60deg 2m" data-ja="反対側" data-en="Opposite" data-ar="من الجهة المقابلة">反対側</button>
+          </div>
+        </div>
+        <div class="info-panel">
+          <div class="ornate-corner top-left"></div>
+          <div class="ornate-corner top-right"></div>
+          <h2 data-ja="キング <span class='accent'>〜漆の芸術〜</span>" data-en="King <span class='accent'>〜Lacquer Art〜</span>" data-ar="الملك <span class='accent'>〜فن اللاكيه〜</span>">キング <span class="accent">〜漆の芸術〜</span></h2>
+          <p data-ja="A powerful, masculine lacquer piece featuring phoenix, pine tree and dragon patterns." data-en="A powerful, masculine lacquer piece featuring phoenix, pine tree and dragon patterns." data-ar="قطعة لاكيه قوية وذكورية تتميز بأنماط العنقاء وشجرة الصنوبر والتنين.">
+            A powerful, masculine lacquer piece featuring phoenix, pine tree and dragon patterns.
+          </p>
+          <p data-ja="このキングは、漆芸・蒔絵の技術（山久漆工、他）と金属切削技術（ヒロセ工業）を融合させた作品です。デザイナー鈴木尚和氏が、日本の戦国時代の武将をモチーフにデザインし、力強さと威厳を表現しています。" data-en="This King piece combines the techniques of lacquer art and maki-e (Yamahisa Lacquer Work, etc.) with metal cutting technology (Hirose Industry). Designer Naokazu Suzuki used Japanese warring states period warlords as motifs to express strength and dignity." data-ar="تجمع قطعة الملك هذه بين تقنيات فن اللاكيه وماكي-إي (أعمال ياماهيسا للاكيه وغيرها) مع تكنولوجيا قطع المعادن (صناعة هيروس). استخدم المصمم ناوكازو سوزوكي أمراء الحرب في فترة الدول المتحاربة اليابانية كزخارف للتعبير عن القوة والكرامة.">
+            このキングは、漆芸・蒔絵の技術（山久漆工、他）と金属切削技術（ヒロセ工業）を融合させた作品です。
+            デザイナー鈴木尚和氏が、日本の戦国時代の武将をモチーフにデザインし、
+            力強さと威厳を表現しています。
+          </p>
+          <p class="accent-text" data-ja="&quot;伝統と革新の融合&quot;" data-en="&quot;Fusion of tradition and innovation&quot;" data-ar="&quot;مزيج من التقاليد والابتكار&quot;">
+            "伝統と革新の融合"
+          </p>
+          <div class="ornate-corner bottom-left"></div>
+          <div class="ornate-corner bottom-right"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- クイーンのセクション -->
+    <section class="hero queen-section">
+      <div class="geometric-pattern right"></div>
+      <div class="container reverse">
+        <div class="info-panel">
+          <div class="ornate-corner top-left"></div>
+          <div class="ornate-corner top-right"></div>
+          <h2 data-ja="クイーン <span class='accent'>〜優美な蒔絵〜</span>" data-en="Queen <span class='accent'>〜Elegant Maki-e〜</span>" data-ar="الملكة <span class='accent'>〜ماكي-إي الأنيق〜</span>">クイーン <span class="accent">〜優美な蒔絵〜</span></h2>
+          <p data-ja="A gorgeous piece that combines noble butterflies and flowers fit for a queen, such as wisteria, chrysanthemums and cherry blossoms." data-en="A gorgeous piece that combines noble butterflies and flowers fit for a queen, such as wisteria, chrysanthemums and cherry blossoms." data-ar="قطعة رائعة تجمع بين الفراشات النبيلة والزهور المناسبة للملكة، مثل الوستارية وأزهار الكريزانثيمم وأزهار الكرز.">
+            A gorgeous piece that combines noble butterflies and flowers fit for a queen, such as wisteria, chrysanthemums and cherry blossoms.
+          </p>
+          <p data-ja="このクイーンは、日本の伝統的な蒔絵技法を用いて制作されています。藤、菊、桜などの花と蝶のモチーフが優美に描かれ、日本の四季と女性の気品を表現しています。" data-en="This Queen is created using traditional Japanese maki-e techniques. Motifs of flowers such as wisteria, chrysanthemums, cherry blossoms, and butterflies are elegantly depicted, expressing the Japanese seasons and feminine elegance." data-ar="تم إنشاء هذه الملكة باستخدام تقنيات ماكي-إي اليابانية التقليدية. تم تصوير زخارف الزهور مثل الوستارية وأزهار الكريزانثيمم وأزهار الكرز والفراشات بأناقة، مما يعبر عن الفصول اليابانية والأناقة الأنثوية.">
+            このクイーンは、日本の伝統的な蒔絵技法を用いて制作されています。
+            藤、菊、桜などの花と蝶のモチーフが優美に描かれ、
+            日本の四季と女性の気品を表現しています。
+          </p>
+          <p class="accent-text" data-ja="&quot;日本の美意識の結晶&quot;" data-en="&quot;Crystallization of Japanese aesthetics&quot;" data-ar="&quot;بلورة الجماليات اليابانية&quot;">
+            "日本の美意識の結晶"
+          </p>
+          <div class="ornate-corner bottom-left"></div>
+          <div class="ornate-corner bottom-right"></div>
+        </div>
+        <div class="model-container">
+          <model-viewer
+            src="models/QUEEN.gltf"
+            alt="クイーンの3Dモデル"
+            auto-rotate
+            camera-controls
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            shadow-intensity="1"
+            camera-orbit="0deg 55deg 2m"
+            id="chess-model-queen"
+          >
+            <button slot="ar-button" class="ar-button">
+              <span data-ja="Web AR で見る" data-en="View in Web AR" data-ar="عرض بتقنية الواقع المعزز">Web AR で見る</span>
+            </button>
+          </model-viewer>
+          
+          <div class="camera-controls right">
+            <button class="camera-btn" data-target="chess-model-queen" data-orbit="0deg 75deg 2m" data-ja="上から" data-en="Top View" data-ar="من الأعلى">上から</button>
+            <button class="camera-btn" data-target="chess-model-queen" data-orbit="90deg 45deg 2m" data-ja="横から" data-en="Side View" data-ar="من الجانب">横から</button>
+            <button class="camera-btn" data-target="chess-model-queen" data-orbit="180deg 60deg 2m" data-ja="反対側" data-en="Opposite" data-ar="من الجهة المقابلة">反対側</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container">
+        <h2 class="section-title" data-ja="TAKUMI Projectの理念" data-en="TAKUMI Project Philosophy" data-ar="فلسفة مشروع تاكومي">TAKUMI Projectの理念</h2>
+        <div class="decorative-divider"></div>
+        <div class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+              <path d="M12,3L2,12h3v8h6v-6h2v6h6v-8h3L12,3z M17,18h-2v-6H9v6H7v-7.81l5-4.5l5,4.5V18z"></path>
+            </svg>
+          </div>
+          <h3 data-ja="プロジェクトの目的" data-en="Project Purpose" data-ar="هدف المشروع">プロジェクトの目的</h3>
+          <p data-ja="伝統工芸の「職人技」を単なる技術としてではなく、芸術作品として世界に認知させることを目指しています。" data-en="We aim to have traditional craftsmanship recognized worldwide as art, not merely as technical skills." data-ar="نهدف إلى الاعتراف بالحرف التقليدية في جميع أنحاء العالم كفن، وليس مجرد مهارات تقنية.">伝統工芸の「職人技」を単なる技術としてではなく、芸術作品として世界に認知させることを目指しています。</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+              <path d="M21,3H3v18h18V3z M19,19H5V5h14V19z M8,15h8v2H8V15z M8,11h8v2H8V11z M8,7h8v2H8V7z"></path>
+            </svg>
+          </div>
+          <h3 data-ja="代表的な作品" data-en="Representative Works" data-ar="الأعمال التمثيلية">代表的な作品</h3>
+          <p data-ja="匠チェスセットと匠ポーカーテーブルは、漆芸・蒔絵の技術と現代技術を融合させた作品です。" data-en="The Takumi Chess Set and Takumi Poker Table are works that fuse lacquer art, maki-e techniques, and modern technology." data-ar="مجموعة شطرنج تاكومي وطاولة بوكر تاكومي هي أعمال تدمج فن اللاكيه وتقنيات ماكي-إي والتكنولوجيا الحديثة.">匠チェスセットと匠ポーカーテーブルは、漆芸・蒔絵の技術と現代技術を融合させた作品です。</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+              <path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8s8,3.59,8,8 S16.41,20,12,20z M11,11V6h2v5h5v2h-5v5h-2v-5H6v-2H11z"></path>
+            </svg>
+          </div>
+          <h3 data-ja="世界への発信" data-en="Global Outreach" data-ar="التواصل العالمي">世界への発信</h3>
+          <p data-ja="国際的なゲームを題材にすることで、海外の愛好家にも日本の匠の技を広く知ってもらうことを目指しています。" data-en="By using international games as themes, we aim to introduce Japanese craftsmanship to enthusiasts around the world." data-ar="من خلال استخدام الألعاب الدولية كموضوعات، نهدف إلى تقديم الحرف اليدوية اليابانية لعشاق الفن في جميع أنحاء العالم.">国際的なゲームを題材にすることで、海外の愛好家にも日本の匠の技を広く知ってもらうことを目指しています。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero">
+      <div class="geometric-pattern left"></div>
+      <div class="container">
+        <div class="info-panel">
+          <div class="ornate-corner top-left"></div>
+          <div class="ornate-corner top-right"></div>
+          <h2 data-ja="TAKUMI Project <span class='accent'>について</span>" data-en="About <span class='accent'>TAKUMI Project</span>" data-ar="حول <span class='accent'>مشروع تاكومي</span>">TAKUMI Project <span class="accent">について</span></h2>
+          <p data-ja="TAKUMI Projectは、伝統工芸の「職人技」を単なる技術としてではなく、芸術作品として世界に認知させることを目指しています。日本各地の匠たちの技術と感性を結集し、唯一無二の作品を創造することで、日本の美意識と技術力を世界に伝える活動を展開しています。" data-en="TAKUMI Project aims to have traditional craftsmanship recognized worldwide as art, not merely as technical skills. By bringing together the techniques and sensibilities of master craftsmen from across Japan to create unique works, we are developing activities to convey Japanese aesthetics and technical prowess to the world." data-ar="يهدف مشروع تاكومي إلى الاعتراف بالحرف التقليدية في جميع أنحاء العالم كفن، وليس مجرد مهارات تقنية. من خلال الجمع بين تقنيات وحساسيات الحرفيين المهرة من جميع أنحاء اليابان لإنشاء أعمال فريدة، نقوم بتطوير أنشطة لنقل الجماليات اليابانية والبراعة التقنية إلى العالم.">
+            TAKUMI Projectは、伝統工芸の「職人技」を単なる技術としてではなく、芸術作品として世界に認知させることを目指しています。日本各地の匠たちの技術と感性を結集し、唯一無二の作品を創造することで、日本の美意識と技術力を世界に伝える活動を展開しています。
+          </p>
+          <p data-ja="プロジェクトには、山久漆工株式会社の山本泰三氏や、造形作家の鈴木尚和氏など、多くの匠や専門家が参加しています。また、製造にはヒロセ工業株式会社や株式会社西本など、各分野の専門企業が関わり、伝統技術と現代技術の融合を実現しています。" data-en="The project involves many master craftsmen and specialists, including Mr. Taizo Yamamoto of Yamahisa Lacquer Work Co., Ltd. and sculptor Mr. Naokazu Suzuki. Manufacturing involves specialized companies in various fields, such as Hirose Industry Co., Ltd. and Nishimoto Co., Ltd., realizing the fusion of traditional and modern technologies." data-ar="يشارك في المشروع العديد من الحرفيين المهرة والمتخصصين، بمن فيهم السيد تايزو ياماموتو من شركة ياماهيسا للاكيه والنحات السيد ناوكازو سوزوكي. يشمل التصنيع شركات متخصصة في مختلف المجالات، مثل شركة هيروس للصناعة وشركة نيشيموتو، مما يحقق الاندماج بين التقنيات التقليدية والحديثة.">
+            プロジェクトには、山久漆工株式会社の山本泰三氏や、造形作家の鈴木尚和氏など、多くの匠や専門家が参加しています。また、製造にはヒロセ工業株式会社や株式会社西本など、各分野の専門企業が関わり、伝統技術と現代技術の融合を実現しています。
+          </p>
+          <div class="ornate-corner bottom-left"></div>
+          <div class="ornate-corner bottom-right"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero queen-section">
+      <div class="geometric-pattern right"></div>
+      <div class="container">
+        <div class="info-panel">
+          <div class="ornate-corner top-left"></div>
+          <div class="ornate-corner top-right"></div>
+          <h2 data-ja="代表作品 <span class='accent'>紹介</span>" data-en="Featured <span class='accent'>Works</span>" data-ar="الأعمال <span class='accent'>المميزة</span>">代表作品 <span class="accent">紹介</span></h2>
+          <p data-ja="<strong>匠チェスセット</strong>：このチェスセットは、漆芸・蒔絵の技術（山久漆工、他）と金属切削技術（ヒロセ工業）を融合させた作品です。デザイナー鈴木尚和氏が、日本の戦国時代の武将や姫、城、僧侶、騎馬、歩兵をモチーフにチェスピースをデザインし、チェスボードには「戦いの大海原」が表現されています。" data-en="<strong>Takumi Chess Set</strong>: This chess set is a work that fuses lacquer art and maki-e techniques (Yamahisa Lacquer Work, etc.) with metal cutting technology (Hirose Industry). Designer Naokazu Suzuki designed chess pieces based on Japanese warring states period warlords, princesses, castles, monks, cavalry, and infantry, while the chessboard expresses 'the great sea of battle'." data-ar="<strong>مجموعة شطرنج تاكومي</strong>: مجموعة الشطرنج هذه هي عمل يدمج فن اللاكيه وتقنيات ماكي-إي (أعمال ياماهيسا للاكيه وغيرها) مع تكنولوجيا قطع المعادن (صناعة هيروس). صمم المصمم ناوكازو سوزوكي قطع الشطرنج بناءً على أمراء الحرب والأميرات والقلاع والرهبان والفرسان والمشاة في فترة الدول المتحاربة اليابانية، بينما تعبر رقعة الشطرنج عن 'البحر العظيم للمعركة'.">
+            <strong>匠チェスセット</strong>：このチェスセットは、漆芸・蒔絵の技術（山久漆工、他）と金属切削技術（ヒロセ工業）を融合させた作品です。デザイナー鈴木尚和氏が、日本の戦国時代の武将や姫、城、僧侶、騎馬、歩兵をモチーフにチェスピースをデザインし、チェスボードには「戦いの大海原」が表現されています。
+          </p>
+          <p data-ja="<strong>匠ポーカーテーブル</strong>：このポーカーテーブルは、北陸の伝統工芸（山久漆工、他）と現代家具の製造技術（マルイチセーリング、他）を融合させた作品です。建築家大塚孝博氏が全体設計を手掛け、蓋の部分には琳派「紅白梅図屏風」をイメージした「夜霧の梅図」が描かれています。また、本体内側には四季を表現した蒔絵が施され、ポーカーゲームを高貴なプレイに引き立てています。" data-en="<strong>Takumi Poker Table</strong>: This poker table is a work that fuses traditional crafts from Hokuriku (Yamahisa Lacquer Work, etc.) with modern furniture manufacturing technology (Maruichi Sailing, etc.). Architect Takahiro Otsuka designed the overall structure, with the lid featuring 'Plum Blossoms in Night Mist' inspired by the Rimpa school's 'Red and White Plum Blossoms Screen'. The inside of the table is decorated with maki-e expressing the four seasons, elevating poker games to a noble play." data-ar="<strong>طاولة بوكر تاكومي</strong>: طاولة البوكر هذه هي عمل يدمج الحرف التقليدية من هوكوريكو (أعمال ياماهيسا للاكيه وغيرها) مع تكنولوجيا تصنيع الأثاث الحديث (ماروتشي للإبحار وغيرها). صمم المهندس المعماري تاكاهيرو أوتسوكا الهيكل العام، مع غطاء يعرض 'أزهار البرقوق في ضباب الليل' مستوحاة من مدرسة ريمبا 'شاشة أزهار البرقوق الحمراء والبيضاء'. تم تزيين الجزء الداخلي من الطاولة بماكي-إي يعبر عن الفصول الأربعة، مما يرفع ألعاب البوكر إلى لعبة نبيلة.">
+            <strong>匠ポーカーテーブル</strong>：このポーカーテーブルは、北陸の伝統工芸（山久漆工、他）と現代家具の製造技術（マルイチセーリング、他）を融合させた作品です。建築家大塚孝博氏が全体設計を手掛け、蓋の部分には琳派「紅白梅図屏風」をイメージした「夜霧の梅図」が描かれています。また、本体内側には四季を表現した蒔絵が施され、ポーカーゲームを高貴なプレイに引き立てています。
+          </p>
+          <div class="ornate-corner bottom-left"></div>
+          <div class="ornate-corner bottom-right"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="geometric-pattern footer"></div>
+    <div class="container">
+      <div class="ornate-border footer">
+        <p data-ja="&copy; 2025 TAKUMI Project" data-en="&copy; 2025 TAKUMI Project" data-ar="&copy; 2025 مشروع تاكومي">&copy; 2025 TAKUMI Project</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application will be mounted here -->
+  <div id="app"></div>
+</body>
+</html>
